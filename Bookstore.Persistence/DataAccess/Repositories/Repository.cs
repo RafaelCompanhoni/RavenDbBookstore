@@ -21,6 +21,11 @@ namespace Bookstore.Persistence.DataAccess.Repositories
             return _session.Query<TEntity>().ToList();
         }
 
+        public TEntity GetById(string id)
+        {
+            return _session.Load<TEntity>(id);
+        }
+
         public void Create(TEntity obj)
         {
             _session.Store(obj);

@@ -306,6 +306,8 @@
     <Content Include="Views\Nav\TopMenu.cshtml" />
     <Content Include="Views\Nav\Menu.cshtml" />
     <Content Include="Views\Books\Index.cshtml" />
+    <Content Include="Views\Books\Create.cshtml" />
+    <Content Include="Views\Books\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

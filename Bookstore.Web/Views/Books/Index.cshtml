@@ -47,9 +47,9 @@
             @Html.DisplayFor(modelItem => item.YearPublished)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Editar", "Edit", "Books", new { bookId = item.Id }, new {})
+            @Html.ActionLink("Detalhes", "Details", "Books", new { bookId = item.Id }, new { })
+            @Html.ActionLink("Deletar", "Delete", "Books", new { bookId = item.Id }, new { })
         </td>
     </tr>
 }

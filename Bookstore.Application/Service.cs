@@ -20,10 +20,20 @@ namespace Bookstore.Application
             return _repository.GetAll();
         }
 
+        public TEntity GetById(string id)
+        {
+            return _repository.GetById(id);
+        }
+
         public void Create(TEntity entity)
         {
             _repository.Create(entity);
             UnitOfWork.SaveChanges();
+        }
+
+        public void Update()
+        {
+            UnitOfWork.SaveChanges(); 
         }
 
         public void Delete(TEntity entity)

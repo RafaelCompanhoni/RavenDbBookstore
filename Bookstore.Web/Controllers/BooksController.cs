@@ -35,33 +35,53 @@ namespace Bookstore.Web.Controllers
 
         // POST: Books/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Book book)
         {
             try
             {
-                // TODO: Add insert logic here
+                // TODO -- tratar erros gerados na camada de aplicação
+                _service.Create(book);
+
+                TempData["status"] = "alert-success";
+                TempData["message"] = string.Format("Livro \"{0}\" criado com sucesso.", book.Title);
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                TempData["status"] = "alert-danger";
+                TempData["message"] = string.Format("Não foi possível criar o usuário - erro no acesso ao banco de dados.");
+                return View(book);
             }
         }
 
         // GET: Books/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string bookId)
         {
-            return View();
+            var book = _service.GetById(bookId);
+            return View(book);
         }
 
         // POST: Books/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(string id, Book book)
         {
             try
             {
-                // TODO: Add update logic here
+                // TODO -- o mapeamento abaixo deve ficar em um AppService especializado - BookAppService
+                var updatedBook = _service.GetById(id);
+                
+                // atualiza campos do livro
+                updatedBook.Title = book.Title;
+                updatedBook.Author = book.Author;
+                updatedBook.Description = book.Description;
+                updatedBook.Price = book.Price;
+                updatedBook.YearPublished = book.YearPublished;
+
+                _service.Update();
+
+                TempData["status"] = "alert-success";
+                TempData["message"] = string.Format("Livro \"{0}\" atualizado com sucesso.", book.Title);
 
                 return RedirectToAction("Index");
             }
