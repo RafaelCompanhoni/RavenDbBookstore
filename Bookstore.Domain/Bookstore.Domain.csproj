@@ -45,6 +45,7 @@
     <Compile Include="Entities\Orders\Order.cs" />
     <Compile Include="Entities\Orders\OrderLine.cs" />
     <Compile Include="Entities\Orders\ValueObjects\OrderStatus.cs" />
+    <Compile Include="Interfaces\ISession.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IService.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />

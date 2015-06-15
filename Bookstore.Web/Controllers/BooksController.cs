@@ -1,17 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 using System.Web.Mvc;
+using Bookstore.Application.Queries.Common;
 using Bookstore.Domain.Entities.Books;
 using Bookstore.Domain.Interfaces;
+using Raven.Client;
 
 namespace Bookstore.Web.Controllers
 {
     public class BooksController : Controller
     {
         private readonly IService<Book> _service;
+        private readonly IDocumentSession _session;
 
-        public BooksController(IService<Book> service)
+        public BooksController(IService<Book> service, IDocumentSession session)
         {
             _service = service;
+            _session = session;
         }
 
         // GET: Books
@@ -20,10 +24,43 @@ namespace Bookstore.Web.Controllers
             return View();
         }
 
-        public PartialViewResult List(string sortOrder)
+        public PartialViewResult List(string sortKey)
         {
-            List<Book> books = _service.GetAll();
-            return PartialView(books);
+            IQueryable<Book> books = _session.Query<Book>();
+
+            bool orderAscending = true;
+            switch (sortKey)
+            {
+                case "Title":
+                    orderAscending = TempData["TitleOrderByAscending"] == null ? false : (bool) TempData["TitleOrderByAscending"];
+                    books.OrderByWithDirection(b => b.Title, orderAscending);
+                    TempData["TitleOrderByAscending"] = !orderAscending;
+                    break;
+
+                case "Author":
+                    orderAscending = TempData["AuthorOrderByAscending"] == null ? false : (bool)TempData["AuthorOrderByAscending"];
+                    books.OrderByWithDirection(b => b.Author, orderAscending);
+                    TempData["AuthorOrderByAscending"] = !orderAscending;
+                    break;
+
+                case "Price":
+                    orderAscending = TempData["PriceOrderByAscending"] == null ? false : (bool)TempData["PriceOrderByAscending"];
+                    books.OrderByWithDirection(b => b.Price, orderAscending);
+                    TempData["PriceOrderByAscending"] = !orderAscending;
+                    break;
+
+                case "YearPublished":
+                    orderAscending = TempData["YearPublishedOrderByAscending"] == null ? false : (bool)TempData["YearPublishedOrderByAscending"];
+                    books.OrderByWithDirection(b => b.YearPublished, orderAscending);
+                    TempData["YearPublishedOrderByAscending"] = !orderAscending;
+                    break;
+
+                default:
+                    books.OrderByWithDirection(b => b.Title, true);
+                    break;
+            }
+
+            return PartialView(books.ToList());
         }
 
         // GET: Books/Details/5
@@ -75,7 +112,7 @@ namespace Bookstore.Web.Controllers
             {
                 // TODO -- o mapeamento abaixo deve ficar em um AppService especializado - BookAppService
                 var updatedBook = _service.GetById(id);
-                
+
                 // atualiza campos do livro
                 updatedBook.Title = book.Title;
                 updatedBook.Author = book.Author;

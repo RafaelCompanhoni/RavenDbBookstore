@@ -40,6 +40,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Raven.Client.Lightweight, Version=3.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\RavenDB.Client.3.0.3690\lib\net45\Raven.Client.Lightweight.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -324,6 +328,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Bookstore.Application\Bookstore.Application.csproj">
+      <Project>{D84A045D-7834-42ED-A5B5-ABD79384A5D6}</Project>
+      <Name>Bookstore.Application</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bookstore.Domain\Bookstore.Domain.csproj">
       <Project>{3FBAB39D-DABC-423F-A671-72F8FE590DE1}</Project>
       <Name>Bookstore.Domain</Name>

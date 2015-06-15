@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Queries\Books\ByPriceLimitQuery.cs" />
+    <Compile Include="Queries\Common\CommonExtensionMethods.cs" />
     <Compile Include="Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -47,6 +49,10 @@
       <Project>{3FBAB39D-DABC-423F-A671-72F8FE590DE1}</Project>
       <Name>Bookstore.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Queries\Customers\" />
+    <Folder Include="Queries\Orders\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
