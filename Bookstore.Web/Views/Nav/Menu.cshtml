@@ -1,0 +1,34 @@
+﻿<ul class="nav nav-sidebar">
+    <li class="@(ViewBag.SelectedCategory == "dashboard" ? "active" : null)">
+        <a href="@Url.RouteUrl(new { controller = "Dashboard", action = "Index", category = "dashboard" })"><i class="glyphicon glyphicon-signal"></i>Dashboard</a>
+    </li>
+
+    <li class="@(ViewBag.SelectedCategory == "catalog" ? "active" : null)">
+        <a data-toggle="collapse" data-target="#catalog-nav-options"><i class="glyphicon glyphicon-th-large"></i>Catálogo</a>
+
+        <div id="catalog-nav-options" class="nav-config-options panel-collapse @(ViewBag.SelectedCategory == "catalog" ? "collapse in" : "collapse")">
+            <ul class="list-unstyled">
+                <li class="@(ViewBag.SelectedSubcategory == "catalog" ? "active-option" : null)">
+                    @Html.RouteLink("Gerenciar Catálogo", new { controller = "Books", action = "Index", category = "catalog", subcategory = "catalog" })
+                </li>
+            </ul>
+        </div>
+    </li>
+
+    <li class="@(ViewBag.SelectedCategory == "users" ? "active" : null)">
+        <a data-toggle="collapse" data-target="#users-nav-options"><i class="glyphicon glyphicon-user"></i>Usuários</a>
+
+        <div id="users-nav-options" class="nav-config-options panel-collapse @(ViewBag.SelectedCategory == "users" ? "collapse in" : "collapse")">
+            <ul class="list-unstyled">
+                <li class="@(ViewBag.SelectedSubcategory == "users" ? "active-option" : null)">
+                    @Html.RouteLink("Gerenciar Usuários", new { controller = "Users", action = "Index", category = "users", subcategory = "users" })
+                </li>
+                <li class="@(ViewBag.SelectedSubcategory == "users-groups" ? "active-option" : null)">
+                    @Html.RouteLink("Grupos de Usuários", new { controller = "Users", action = "Index", category = "users", subcategory = "users-groups" })
+                </li>
+            </ul>
+        </div>
+    </li>
+
+</ul>
+
