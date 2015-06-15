@@ -17,8 +17,13 @@ namespace Bookstore.Web.Controllers
         // GET: Books
         public ActionResult Index()
         {
+            return View();
+        }
+
+        public PartialViewResult List(string sortOrder)
+        {
             List<Book> books = _service.GetAll();
-            return View(books);
+            return PartialView(books);
         }
 
         // GET: Books/Details/5

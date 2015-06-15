@@ -53,8 +53,8 @@ namespace Bookstore.Web.IoC
             builder.Register<IDocumentSession>(b =>
             {
                 var documentStore = new BookstoreDocumentStore();
-
                 return documentStore.DocumentStore.OpenSession();
+
             }).InstancePerRequest();
         }
     }

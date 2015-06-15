@@ -13,7 +13,7 @@ namespace Bookstore.Persistence.Context
             DocumentStore = new DocumentStore
             {
                 Url = "http://localhost:8080",
-                DefaultDatabase = "Books"
+                DefaultDatabase = "Bookstore"
             };
 
             // Inicializa o gerenciador de sessão e registra os índices

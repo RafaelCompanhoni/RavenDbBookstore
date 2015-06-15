@@ -12,6 +12,11 @@
                     @Html.RouteLink("Gerenciar Catálogo", new { controller = "Books", action = "Index", category = "catalog", subcategory = "catalog" })
                 </li>
             </ul>
+            <ul class="list-unstyled">
+                <li class="@(ViewBag.SelectedSubcategory == "create" ? "active-option" : null)">
+                    @Html.RouteLink("Criar novo livro", new { controller = "Books", action = "Create", category = "catalog", subcategory = "create" })
+                </li>
+            </ul>
         </div>
     </li>
 

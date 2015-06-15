@@ -171,6 +171,8 @@
     <Content Include="Content\js\scripts.js" />
     <None Include="Content\js\_references.js" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -308,6 +310,7 @@
     <Content Include="Views\Books\Index.cshtml" />
     <Content Include="Views\Books\Create.cshtml" />
     <Content Include="Views\Books\Edit.cshtml" />
+    <Content Include="Views\Books\List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

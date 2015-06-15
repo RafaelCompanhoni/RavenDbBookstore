@@ -11818,6 +11818,11 @@ body {
   display: none;
 }
 
+/* line 1, ../sass/modules/_tables.scss */
+.no-wrap {
+  white-space: nowrap;
+}
+
 /* line 1, ../sass/modules/_misc.scss */
 .page-filters {
   margin-bottom: 30px;

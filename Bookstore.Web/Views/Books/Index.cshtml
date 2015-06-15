@@ -4,54 +4,59 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Catálogo de Livros</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Author)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.YearPublished)
-        </th>
-        <th></th>
-    </tr>
+<div id="filter-options" class="panel panel-default">
+    <div class="panel-heading" data-toggle="collapse" data-target="#collapse-options">
+        <span class="panel-title panel-heading"><i class="glyphicon glyphicon-filter"></i> Filtros</span>
+    </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Author)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.YearPublished)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", "Books", new { bookId = item.Id }, new {})
-            @Html.ActionLink("Detalhes", "Details", "Books", new { bookId = item.Id }, new { })
-            @Html.ActionLink("Deletar", "Delete", "Books", new { bookId = item.Id }, new { })
-        </td>
-    </tr>
+    <div id="collapse-options" class="panel-collapse collapse">
+        <div class="panel-body">
+            CONFIG
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Ajax.ActionLink("Título", "List", "Books", new { sortOrder = "Title" }, new AjaxOptions { UpdateTargetId = "tableBody" })
+                    </th>
+                    <th>
+                        @Ajax.ActionLink("Autor", "List", "Books", new { sortOrder = "Author" }, new AjaxOptions { UpdateTargetId = "tableBody" })
+                    </th>
+                    <th>
+                        Sinopse
+                    </th>
+                    <th>
+                        @Ajax.ActionLink("Preço", "List", "Books", new { sortOrder = "Price" }, new AjaxOptions { UpdateTargetId = "tableBody" })
+                    </th>
+                    <th>
+                        @Ajax.ActionLink("Ano", "List", "Books", new { sortOrder = "YearPublished" }, new AjaxOptions { UpdateTargetId = "tableBody" })
+                    </th>
+                    <th>
+                        Ações
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody id="tableBody">
+                @Html.Action("List")
+            </tbody>
+        </table>
+    </div>
+
+    <div class="panel-footer">
+        <a href="@Url.RouteUrl(new { controller = "Books", action = "Create", category = "catalog", subcategory = "create" })" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>  Cadastrar Novo Livro</a>
+    </div>
+</div>
+
+@section Optional {
+
+    @{ Html.RenderPartial("_RenderNotificationModal"); }
+
 }
-
-</table>

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Bookstore.Domain.Entities.Books.Book>
+
+@if (Model.Any())
+{
+    foreach (var item in Model)
+    {
+        <tr>
+            <td class="no-wrap">
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td class="no-wrap">
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td class="no-wrap">
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td class="no-wrap">
+                @Html.DisplayFor(modelItem => item.YearPublished)
+            </td>
+            <td class="no-wrap">
+                @Html.ActionLink("Editar", "Edit", new { bookId = item.Id }) |
+                @Html.ActionLink("Detalhes", "Details", new { bookId = item.Id }) |
+                @Html.ActionLink("Deletar", "Delete", new { bookId = item.Id })
+            </td>
+        </tr>
+    }
+}
+else
+{
+    <tr>
+        <td colspan="100">Nenhum livro cadastrado.</td>
+    </tr> 
+}
+
+
