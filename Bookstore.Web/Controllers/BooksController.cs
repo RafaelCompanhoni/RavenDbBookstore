@@ -33,30 +33,30 @@ namespace Bookstore.Web.Controllers
             {
                 case "Title":
                     orderAscending = TempData["TitleOrderByAscending"] == null ? false : (bool) TempData["TitleOrderByAscending"];
-                    books.OrderByWithDirection(b => b.Title, orderAscending);
+                    books = books.OrderByWithDirection(b => b.Title, orderAscending);
                     TempData["TitleOrderByAscending"] = !orderAscending;
                     break;
 
                 case "Author":
                     orderAscending = TempData["AuthorOrderByAscending"] == null ? false : (bool)TempData["AuthorOrderByAscending"];
-                    books.OrderByWithDirection(b => b.Author, orderAscending);
+                    books = books.OrderByWithDirection(b => b.Author, orderAscending);
                     TempData["AuthorOrderByAscending"] = !orderAscending;
                     break;
 
                 case "Price":
                     orderAscending = TempData["PriceOrderByAscending"] == null ? false : (bool)TempData["PriceOrderByAscending"];
-                    books.OrderByWithDirection(b => b.Price, orderAscending);
+                    books = books.OrderByWithDirection(b => b.Price, orderAscending);
                     TempData["PriceOrderByAscending"] = !orderAscending;
                     break;
 
                 case "YearPublished":
                     orderAscending = TempData["YearPublishedOrderByAscending"] == null ? false : (bool)TempData["YearPublishedOrderByAscending"];
-                    books.OrderByWithDirection(b => b.YearPublished, orderAscending);
+                    books = books.OrderByWithDirection(b => b.YearPublished, orderAscending);
                     TempData["YearPublishedOrderByAscending"] = !orderAscending;
                     break;
 
                 default:
-                    books.OrderByWithDirection(b => b.Title, true);
+                    books = books.OrderByWithDirection(b => b.Title, true);
                     break;
             }
 
