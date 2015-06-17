@@ -93,6 +93,7 @@
   <ItemGroup>
     <Content Include="Content\css\pages\dashboard.css" />
     <Content Include="Content\css\pages\manage-users.css" />
+    <Content Include="Content\css\pages\search-filter.css" />
     <Content Include="Content\css\styles.css" />
     <Content Include="Content\fonts\font-awesome\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons\glyphicons-halflings-regular.svg" />
@@ -315,6 +316,8 @@
     <Content Include="Views\Books\Create.cshtml" />
     <Content Include="Views\Books\Edit.cshtml" />
     <Content Include="Views\Books\List.cshtml" />
+    <Content Include="Views\Shared\_SearchAndFilter.cshtml" />
+    <Content Include="Content\sass\pages\search-filter.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

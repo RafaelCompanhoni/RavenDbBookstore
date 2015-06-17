@@ -28,7 +28,7 @@ namespace Bookstore.Web.Controllers
         {
             IQueryable<Book> books = _session.Query<Book>();
 
-            bool orderAscending = true;
+            var orderAscending = true;
             switch (sortKey)
             {
                 case "Title":

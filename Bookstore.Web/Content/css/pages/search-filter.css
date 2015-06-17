@@ -1,0 +1,63 @@
+/* line 1, ../../sass/pages/search-filter.scss */
+#search-filter {
+  margin-bottom: 30px;
+}
+
+/* line 5, ../../sass/pages/search-filter.scss */
+.dropdown.dropdown-lg .dropdown-menu {
+  margin-top: -1px;
+  padding: 6px 20px;
+}
+
+/* line 10, ../../sass/pages/search-filter.scss */
+.input-group-btn .btn-group {
+  display: flex !important;
+}
+
+/* line 14, ../../sass/pages/search-filter.scss */
+.btn-group .btn {
+  border-radius: 0;
+  margin-left: -1px;
+}
+
+/* line 19, ../../sass/pages/search-filter.scss */
+.btn-group .btn:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+/* line 24, ../../sass/pages/search-filter.scss */
+.btn-group .form-horizontal .btn[type="submit"] {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+/* line 29, ../../sass/pages/search-filter.scss */
+.form-horizontal .form-group {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* line 34, ../../sass/pages/search-filter.scss */
+.form-group .form-control:last-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+@media screen and (min-width: 768px) {
+  /* line 40, ../../sass/pages/search-filter.scss */
+  #adv-search {
+    width: 750px;
+    margin: 0 auto;
+  }
+
+  /* line 44, ../../sass/pages/search-filter.scss */
+  .dropdown.dropdown-lg {
+    position: static !important;
+  }
+
+  /* line 47, ../../sass/pages/search-filter.scss */
+  .dropdown.dropdown-lg .dropdown-menu {
+    min-width: 650px;
+  }
+}
